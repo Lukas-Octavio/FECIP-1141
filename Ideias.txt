@@ -1,0 +1,28 @@
+Antes de entrar na aba de professores o mesmo terá que colocar um login e uma senha. Quando entrar em sua conta o professor terá a opção de:
+
+1-Turmas
+  1-Mecânica.
+  2-Informática.
+    1-1141
+      1-Média geral da turma
+      2-Faltas
+      3-Médias
+        1-Boas
+         Aluno(a): Leandro César Nº21- Possui uma média de 10.00 em sua matéria.
+        2-Razoáveis
+         Aluno(a): Cauã Henrique Nº?-Possui uma média de 6.3 em sua matéria.
+        3-Ruins
+         Aluno(a): Gabriel Michaeli Nº13- Possui uma média de 2.4 em sua matéria.
+    2-1142
+  3-Eletrônica.
+  4-Eletrotécnica.
+  5-Automação.
+2-Salas que deve ir
+  1-Segunda
+    (Das 7:00 até 8:40) Turma 1141
+    (Das 8:40 até 10:20) Turma 1142
+  2-Terça
+3-Datas de NPC
+  27-05-19
+4-Datas de NTI
+  30-05-19
