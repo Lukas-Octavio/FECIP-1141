@@ -1,0 +1,112 @@
+/*
+ * Created by SharpDevelop.
+ * User: GABRIEL
+ * Date: 09/06/2019
+ * Time: 22:08
+ * 
+ * To change this template use Tools | Options | Coding | Edit Standard Headers.
+ */
+using System;
+
+namespace ProjectFECIP1._
+{
+	class Program
+	{
+		public static void Main(string[] args)
+		{
+		inicio:
+			Console.WriteLine("Bem Vindo! Como deseja logar?");
+			Console.WriteLine("1. Administrador");
+			Console.WriteLine("2. Professor");
+			Console.WriteLine("3. Aluno");
+			int opcao=Convert.ToInt32(Console.ReadLine());
+			
+				switch(opcao)
+				{
+					case(1):
+					adm:
+						Console.Clear();
+						Console.Write("Insira a chave de segurança: "); int admsenha=Convert.ToInt32(Console.ReadLine());
+							if(admsenha==321){
+								Console.Clear();
+								goto adm1;
+							}
+							else
+								Console.Clear();
+								Console.WriteLine("Chave de acesso inválida");
+								Console.WriteLine("Deseja tentar novamente ou retornar ao menu?");
+								Console.WriteLine("1. Tentar Novamente");
+								Console.WriteLine("2. Menu");
+								string admopcao=Console.ReadLine();
+									if(admopcao=="1"){
+										goto adm;
+									}
+									else
+										Console.Clear();
+										goto inicio;
+					case(2):
+					prof:
+						Console.Clear();
+						Console.Write("Insira seu Nome: "); string profnome=Console.ReadLine();
+						Console.Write("Insira sua Senha: "); int profsenha=Convert.ToInt32(Console.ReadLine());
+							 if((profsenha==123)&&(profnome=="Rafael")){
+								Console.Clear();
+								goto prof1;
+							 }
+							 else
+								Console.Clear();
+								Console.WriteLine("Desculpe senha ou nome inválido");
+								Console.WriteLine("Deseja tentar novamente ou retornar ao menu?");
+								Console.WriteLine("1. Tentar Novamente");
+								Console.WriteLine("2. Menu");
+								string profopcao=Console.ReadLine();
+									 if(profopcao=="1"){
+										 goto prof;
+									 }
+									 else
+										 Console.Clear();
+										 goto inicio;
+					case(3):
+					aluno:
+						 Console.Clear();
+						 Console.Write("Insira sua Identificação: "); int alunoidentificacao=Convert.ToInt32(Console.ReadLine());
+							 if(alunoidentificacao==1234){
+								Console.Clear();
+								goto aluno1;
+							 }
+							 else
+								Console.Clear();
+								Console.WriteLine("Desculpe identificação inválida");
+								Console.WriteLine("Deseja tentar novamente ou retornar ao menu?");
+								Console.WriteLine("1. Tentar Novamente");
+								Console.WriteLine("2. Menu");
+								string alunoopcao=Console.ReadLine();
+									 if(alunoopcao=="1"){
+										 goto aluno;
+									 }
+									 else
+										 Console.Clear();
+										 goto inicio;
+				}
+			
+			prof1:
+				Console.WriteLine("Bem vindo Professor");
+				Console.WriteLine("O que deseja verificar?");
+				Console.ReadKey(true);
+				Console.Clear();
+				goto inicio;
+			adm1:
+				Console.WriteLine("Bem vindo ao modo ADM");
+				Console.WriteLine("O que deseja verificar?");
+				Console.ReadKey(true);
+				Console.Clear();
+				goto inicio;
+			aluno1:
+				Console.WriteLine("Bem vindo aluno");
+				Console.WriteLine("O que deseja verificar?");
+				Console.ReadKey(true);
+				Console.Clear();
+				goto inicio;
+		}
+	}
+}
