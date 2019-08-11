@@ -1,0 +1,29 @@
+Modo ADM
+Criação de usuário:
+
+	Console.Clear();
+
+		Console.Write("Digite o login do 1º usuário: ");
+			useraluno[0]=Console.ReadLine();
+		Console.Write("Digite a senha do 1º usuário: ");
+			alunopass[0]=Convert.ToInt32(Console.ReadLine());							
+		Console.WriteLine("Deseja criar mais ou retornar?\n1. Continuar\n2. Retornar");
+			int opcreturn=Convert.ToInt32(Console.ReadLine());
+				
+					if(opcreturn==2)
+					{
+					Console.Clear();
+					goto inicio;
+					}
+
+	Console.Clear();
+
+		Console.Write("Digite o login do 2º usuário: ");
+			useraluno[1]=Console.ReadLine();
+		Console.Write("Digite a senha do 2º usuário: ");
+			alunopass[1]=Convert.ToInt32(Console.ReadLine());	
+		Console.WriteLine("Usuário criado, devido ao fato de ser um teste beta retornaremos ao menu principal.");
+	
+	Console.ReadKey(true);
+	Console.Clear();
+	goto inicio;
