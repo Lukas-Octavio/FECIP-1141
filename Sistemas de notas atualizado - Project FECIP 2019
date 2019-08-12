@@ -1,0 +1,197 @@
+string[] useraluno=new string[2];
+			int[] alunopass=new int[2];			
+				useraluno[0]= " ";											
+				alunopass[0]= 0;
+				useraluno[1]= " ";
+				alunopass[1]= 0;
+		//----------------------------------
+		double[] notas=new double[2];
+				notas[0]= 0;
+				notas[1]= 0;
+
+              
+		inicio:
+			Console.WriteLine("Bem Vindo! Como deseja logar? \n1. Administrador \n2. Professor \n3. Aluno");
+
+			int opcao=Convert.ToInt32(Console.ReadLine());
+			
+				switch(opcao)
+				{
+					case(1):
+					adm:
+						Console.Clear();
+						Console.Write("Insira a chave de segurança: "); int admsenha=Convert.ToInt32(Console.ReadLine());
+							if(admsenha==321){
+								Console.Clear();
+								goto adm1;
+							}
+							else
+								Console.Clear();
+								Console.WriteLine("Chave de acesso inválida \nDeseja tentar novamente ou retornar ao menu?");
+								Console.WriteLine("1. Tentar Novamente \n2. Menu");
+								string admopcao=Console.ReadLine();
+									if(admopcao=="1"){
+										goto adm;
+									}
+									else
+										Console.Clear();
+										goto inicio;
+					case(2):
+					prof:
+						Console.Clear();
+						Console.Write("Insira seu Nome: "); string profnome=Console.ReadLine();
+						Console.Write("Insira sua Senha: "); int profsenha=Convert.ToInt32(Console.ReadLine());
+                        if ((profsenha == 123) && (profnome == "Rafael"))
+                        {
+                            Console.Clear();
+                            goto prof1;
+                        }
+                             if((profsenha==456)&&(profnome=="Clayton")){
+								Console.Clear();
+								goto prof2;
+							 }
+							 else
+								Console.Clear();
+								Console.WriteLine("Desculpe senha ou nome inválido \nDeseja tentar novamente ou retornar ao menu?");
+								Console.WriteLine("1. Tentar Novamente \n2. Menu");
+								string profopcao=Console.ReadLine();
+									 if(profopcao=="1"){
+										 goto prof;
+									 }
+									 else
+										 Console.Clear();
+										 goto inicio;
+					case(3):
+					aluno:
+						 Console.Clear();
+						 Console.Write("Insira seu login: "); string alunoidentificacao=Console.ReadLine();
+						 Console.Write("Insira sua senha: ");int alunosenha=Convert.ToInt32(Console.ReadLine());
+						 if((alunoidentificacao==useraluno[0])&&(alunosenha==alunopass[0])){
+								Console.Clear();
+								goto aluno1;}
+						 if((alunoidentificacao==useraluno[1])&&(alunosenha==alunopass[1])){
+						 		Console.Clear();
+						 		goto aluno2;}
+							 else
+								Console.Clear();
+								Console.WriteLine("Desculpe identificação inválida \nDeseja tentar novamente ou retornar ao menu?");
+								Console.WriteLine("1. Tentar Novamente \n2. Menu");
+								string alunoopcao=Console.ReadLine();
+									 if(alunoopcao=="1"){
+										 goto aluno;
+									 }
+									 else
+										 Console.Clear();
+										 goto inicio;
+				}
+			prof1:
+				Console.WriteLine("Bem vindo Rafael \nO que deseja verificar?");
+				Console.WriteLine("1. Inserir Notas");
+				string prof1op = Console.ReadLine();
+				switch(prof1op){
+					case("1"):
+						Console.Clear();
+							Console.WriteLine("Selecione um aluno: \n1. {0} \n2. {1}", useraluno[0], useraluno[1]);
+							string notas1=Console.ReadLine();
+							if(notas1=="1"){
+								Console.Clear();
+								Console.WriteLine("Digite a nota que será aplicada para o aluno {0}", useraluno[0]);
+								notas[0]=Convert.ToDouble(Console.ReadLine());}
+							if(notas1=="2"){
+								Console.Clear();
+								Console.WriteLine("Digite a nota que será aplicada para o aluno {0}", useraluno[1]);
+								notas[1]=Convert.ToDouble(Console.ReadLine());}
+							break;}
+				Console.Clear();
+				Console.WriteLine("Deseja sair? \n1. Sim \n2. Não"); string opcaoprof1=Console.ReadLine();
+				if(opcaoprof1=="1"){
+				Console.Clear();
+				goto inicio;
+				}
+				else
+					goto prof1;
+
+            prof2:
+                Console.WriteLine("Bem vindo Clayton \nO que deseja verificar?");
+                Console.WriteLine("1. Inserir Notas");
+                string prof2op = Console.ReadLine();
+                switch (prof2op)
+                {
+                    case ("1"):
+                        Console.Clear();
+                        Console.WriteLine("Selecione um aluno: \n1. {0} \n2. {1}", useraluno[0], useraluno[1]);
+                        notas[1] = Convert.ToInt32(Console.ReadLine());
+                        if (notas[1] == 1)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Digite a nota que será aplicada para o aluno {0}", useraluno[0]);
+                            notas[0] = Convert.ToDouble(Console.ReadLine());
+                        }
+                        if (notas[1] == 2)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Digite a nota que será aplicada para o aluno {0}", useraluno[1]);
+                            notas[1] = Convert.ToDouble(Console.ReadLine());
+                        }
+                        break;
+                }
+                Console.Clear();
+                Console.WriteLine("Deseja sair? \n1. Sim \n2. Não"); string opcaoprof2 = Console.ReadLine();
+                if (opcaoprof2 == "1")
+                {
+                    Console.Clear();
+                    goto inicio;
+                }
+                else
+                    goto prof2;
+			adm1:
+				Console.WriteLine("Bem vindo ao modo ADM \nO que deseja verificar? \n1-Criar um usuário");
+				string opc1=Console.ReadLine();
+				switch(opc1){
+					case("1"):
+						Console.Clear();
+						Console.Write("Digite o login do 1º usuário: ");
+							useraluno[0]=Console.ReadLine();
+						Console.Write("Digite a senha do 1º usuário: ");
+							alunopass[0]=Convert.ToInt32(Console.ReadLine());
+							
+						Console.WriteLine("Deseja criar mais ou retornar?\n1. Continuar\n2. Retornar");
+							int opcreturn=Convert.ToInt32(Console.ReadLine());
+							if(opcreturn==2){
+								Console.Clear(); goto inicio;}
+							Console.Clear();
+						Console.Write("Digite o login do 2º usuário: ");
+							useraluno[1]=Console.ReadLine();
+						Console.Write("Digite a senha do 2º usuário: ");
+							alunopass[1]=Convert.ToInt32(Console.ReadLine());
+							
+						Console.WriteLine("Usuário criado, devido ao fato de ser um teste beta retornaremos ao menu principal.");
+						Console.ReadKey(true);
+						Console.Clear(); goto inicio;
+				}
+			aluno1:
+				Console.WriteLine("Bem vindo {0} \nO que deseja verificar?", useraluno[0]);
+				Console.WriteLine("1. Notas"); string aluno1notas = Console.ReadLine();
+				Console.Clear();
+				switch(aluno1notas){
+					case("1"):
+						Console.WriteLine("     Lógica \tRedes \tSistemas");
+						Console.WriteLine("Nti1:  {0}\t {1}", notas[0], notas[1]);
+							break;
+				}
+				Console.ReadKey(true);
+				Console.Clear();
+				goto inicio;
+			aluno2:
+				Console.WriteLine("Bem vindo {0} \nO que deseja verificar?", useraluno[1]);
+				Console.WriteLine("1. Notas");string aluno2notas = Console.ReadLine();
+				Console.Clear();
+				switch(aluno2notas){
+					case("1"):
+						Console.WriteLine("     Lógica \tRedes \tSistemas");
+							Console.WriteLine("Nti1:  {0}", notas[1]);
+							break;
+				}
+				Console.ReadKey(true);
+				Console.Clear();
+				goto inicio;
