@@ -1,0 +1,644 @@
+//[Vetores de Alunos e Professores]====================================================================================================================================================================
+			
+			string[] useraluno=new string[2];
+            int[] alunopass=new int[2];            
+                useraluno[0]= " ";                                            
+                alunopass[0]= 0;
+                useraluno[1]= " ";
+                alunopass[1]= 0;
+                
+            string[] userprof=new string[2];
+            int[] profpass=new int[2];            
+                userprof[0]= " ";                                            
+                profpass[0]= 0;
+                userprof[1]= " ";
+                profpass[1]= 0;
+                
+//[Vetores de Notas]===================================================================================================================================================================================
+        
+        	double[] notaslogica=new double[2];
+                notaslogica[0]= 0;
+                notaslogica[1]= 0;
+                
+        	double[] notasredes=new double[2];
+                notasredes[0]= 0;
+                notasredes[1]= 0;
+                
+        	double[] notassisope=new double[2];
+                notassisope[0]= 0;
+                notassisope[1]= 0;
+                
+//[Vetores de Menssagens]==============================================================================================================================================================================
+        	
+			string mensagemall = "", mensagemprof = "", mensagemaluno = ""; 
+			
+//[Variáveis do Histórico de Atividades]===============================================================================================================================================================
+			
+			int usercriado=0, msgenviadas=0; int[] logincheckY= new int[10]; int[] logincheckN= new int[10];
+        	
+//[Menu Principal]=====================================================================================================================================================================================
+        inicio:
+        	Console.ForegroundColor= ConsoleColor.Cyan;
+            Console.WriteLine("Bem Vindo! Como deseja logar? \n1. Administrador \n2. Professor \n3. Aluno");
+            	string opcao=Console.ReadLine();
+//Switch de Logins
+               switch(opcao)
+               {
+                   case("1"):
+                    adm:
+                    	Console.ForegroundColor= ConsoleColor.Yellow;
+                        Console.Clear();
+                        Console.Write("Insira a chave de segurança: "); int admsenha=Convert.ToInt32(Console.ReadLine());
+                            if(admsenha==321){
+                                Console.Clear();
+                                goto menuadm;
+                            }
+                            else
+                                Console.Clear();
+                                Console.ForegroundColor= ConsoleColor.Red;
+ //Opção inválida ADM                              
+                                retornoadm:
+                                Console.WriteLine("Chave de acesso inválida \nDeseja tentar novamente ou retornar ao menu?");
+                                Console.WriteLine("1. Tentar Novamente \n2. Menu");
+                                	int admopcao=Convert.ToInt32(Console.ReadLine());
+                                    if(admopcao==1){
+                                        goto adm;
+                                    }
+                                
+                                    if(admopcao==2){
+                                         Console.Clear();
+                                         goto inicio;
+                                     }
+                                	  if (admopcao>=3){
+                                	Console.Clear();
+                                	Console.WriteLine("Opção inválida\n");
+                                	goto retornoadm;
+                                }
+                                break;
+                   case("2"):
+                    prof:
+                    	Console.ForegroundColor= ConsoleColor.Green;
+                        Console.Clear();
+                        Console.Write("Insira seu Nome: "); string profnome=Console.ReadLine();
+                        Console.Write("Insira sua Senha: "); int profsenha=Convert.ToInt32(Console.ReadLine());
+                        
+                        if ((profsenha == 123) && (profnome == "Rafael")){
+                        	logincheckY[0]=1;
+                            Console.Clear();
+                            goto profrafael;}
+                             if((profsenha==456)&&(profnome=="Clayton")){
+                        	logincheckY[1]=1;
+                                Console.Clear();
+                                goto profclayton;}
+                        if((profsenha==profpass[0])&&(profnome==userprof[0])){
+                        	logincheckY[2]=1;
+                                Console.Clear();
+                                goto prof3;}
+                       
+                             else 
+                                Console.Clear();
+                                Console.ForegroundColor= ConsoleColor.Red;
+ //Opção inválida PROFESSOR
+                                retornoprof:
+                                Console.WriteLine("Desculpe senha ou nome inválido \nDeseja tentar novamente ou retornar ao menu?");
+                                Console.WriteLine("1. Tentar Novamente \n2. Menu");
+                                int profopcao=Convert.ToInt32(Console.ReadLine());
+                                     if(profopcao==1){
+                                         goto prof;
+                                     }
+                                
+                                      if(profopcao==2){
+                                         Console.Clear();
+                                         goto inicio;
+                                     }
+                                	  if (profopcao>=3){
+                                	Console.Clear();
+                                	Console.WriteLine("Opção inválida\n");
+                                	goto retornoprof;
+                                }
+                                	  	
+                                break;
+                                     
+                   case("3"):
+                    aluno:
+                    	Console.ForegroundColor = ConsoleColor.Green;
+                         Console.Clear();
+                         Console.Write("Insira seu login: "); string alunoidentificacao=Console.ReadLine();
+                         Console.Write("Insira sua senha: "); int alunosenha=Convert.ToInt32(Console.ReadLine());
+                         if((alunoidentificacao==useraluno[0])&&(alunosenha==alunopass[0])){
+                                Console.Clear();
+                                goto aluno1;}
+                         if((alunoidentificacao==useraluno[1])&&(alunosenha==alunopass[1])){
+                                 Console.Clear();
+                                 goto aluno2;}
+                             else
+                                Console.Clear();
+                                Console.ForegroundColor= ConsoleColor.Red;
+//Opção inválida ALUNO                             
+                                retornoaluno:
+                                Console.WriteLine("Desculpe identificação inválida \nDeseja tentar novamente ou retornar ao menu?");
+                                Console.WriteLine("1. Tentar Novamente \n2. Menu");
+                                int alunoopcao=Convert.ToInt32(Console.ReadLine());
+                                     if(alunoopcao==1){
+                                         goto aluno;
+                                     }
+                                         
+                                      if(alunoopcao==2){
+                                         Console.Clear();
+                                         goto inicio;
+                                     }
+                                	  if (alunoopcao>=3){
+                                	Console.Clear();
+                                	Console.WriteLine("Opção inválida\n");
+                                	goto retornoaluno;
+                                }
+                                break;
+                                         
+					default:
+                          Console.Clear();
+                          Console.ForegroundColor = ConsoleColor.Red;
+                          Console.WriteLine("Opção inválida, tente novamente!");
+                          Console.ReadKey(true);
+                          Console.Clear();
+                          goto inicio;
+               
+               }
+               
+//[Área do Administrador]==============================================================================================================================================================================
+                
+            menuadm:
+                Console.ForegroundColor= ConsoleColor.Yellow;
+                Console.WriteLine("Bem vindo ao modo ADM \nO que deseja verificar? \n1. Criar um Aluno \n2. Criar um Professor \n3. Enviar mensagem \n4. Histórico de Atividades \n5. Sair");
+                string opc1=Console.ReadLine();
+                
+                	switch(opc1){
+                        
+                    	case("1")://Criação de alunos
+                    	    Console.ForegroundColor= ConsoleColor.Yellow;
+                			Console.Clear();
+                    	    Console.Write("Digite o login do 1º aluno: ");
+                    	        useraluno[0]=Console.ReadLine();
+                    	    Console.Write("Digite a senha do 1º aluno: ");
+                    	        alunopass[0]=Convert.ToInt32(Console.ReadLine());
+                    	     	usercriado++;
+                    	    Console.ForegroundColor = ConsoleColor.Red;
+                    	    Console.WriteLine("\nDeseja criar mais ou retornar?\n1. Continuar\n2. Retornar");
+                    	        int opcreturn=Convert.ToInt32(Console.ReadLine());
+                           
+                    		        if(opcreturn==2){
+                    		            Console.Clear(); 
+                    		            goto menuadm;
+                    		        }
+                            
+                            Console.Clear();
+                            Console.ForegroundColor= ConsoleColor.Yellow;
+                   	        Console.Write("Digite o login do 2º aluno: ");
+                      	      useraluno[1]=Console.ReadLine();
+                      	    Console.Write("Digite a senha do 2º aluno: ");
+                         	  alunopass[1]=Convert.ToInt32(Console.ReadLine());
+                           	  usercriado++;
+                            Console.WriteLine("Pressione qualquer tecla para retornar ao menu.");
+                            Console.ReadKey(true);
+                            Console.Clear(); goto menuadm;
+                        
+                    	case("2")://Criação do professor
+                        	Console.Clear();
+                        	Console.Write("Digite o login do 1º professor: ");
+                            	userprof[0]=Console.ReadLine();
+                        	Console.Write("Digite a senha do 1º professor: ");
+                            	profpass[0]=Convert.ToInt32(Console.ReadLine());
+                            	usercriado++;
+                        	Console.WriteLine("Pressione qualquer tecla para retornar ao menu.");
+                        	Console.ReadKey(true);
+                        	Console.Clear(); goto menuadm;
+                        	
+                    	case("3")://Envio de Mensagens
+                        menumsg:
+                        	Console.Clear();
+                        	Console.ForegroundColor = ConsoleColor.Yellow;
+                        	Console.WriteLine("Escolha quem você deseja enviar uma mensagem");
+                            Console.WriteLine("1. Todos os usuários \n2. Todos os professores \n3. Todos os alunos \n4. Retorna ao Menu ADM");
+                        		string mensagemopc = Console.ReadLine();
+                        		
+//Switch para o Menu de escolhas para enviar mensagens                  
+                        			switch (mensagemopc){
+                        			
+                       					case ("1"):
+                       				 		Console.Clear();
+                        					Console.WriteLine("Digite a mensagem que deseja enviar a todos os usuários:");
+                        						mensagemall=Console.ReadLine();
+                        						msgenviadas++;
+                         					Console.Clear();
+                         					goto menuadm;
+                        
+                        				case ("2"):
+                        					Console.Clear();
+                        					Console.WriteLine("Digite a mensagem que deseja enviar a todos os professores:");
+                        						mensagemprof=Console.ReadLine();
+                        						msgenviadas++;
+                         					Console.Clear();
+                         					goto menuadm;
+
+                        
+                        				case ("3"):
+                        					Console.Clear();
+                        					Console.WriteLine("Digite a mensagem que deseja enviar a todos os alunos:");
+                        						mensagemaluno=Console.ReadLine();
+                        						msgenviadas++;
+                         					Console.Clear();
+                         					goto menuadm;
+                         			
+                         				case("4"):
+                         					Console.Clear();
+                         					goto menuadm;
+                       
+                        				default:
+                        					Console.Clear();
+                        					Console.ForegroundColor = ConsoleColor.Red;
+                        					Console.WriteLine("Opção inválida, tente novamente!");
+                        					Console.ReadKey(true);
+                        					Console.Clear();
+                        					goto menumsg;
+                        					}
+                        	
+                    	case("4")://Histórico de atividades
+								Console.Clear();
+								Console.WriteLine("Usuários criados: {0}", usercriado);
+                        		Console.WriteLine("Mensagens enviadas: {0}", msgenviadas);
+                        		
+                        	 	Console.ForegroundColor=ConsoleColor.Green;
+                        	 	
+                        	 	if(logincheckY[0]==1){
+                        	 		Console.WriteLine("Rafael logou.");}
+                        	 	if(logincheckN[0]==1){
+                        	 	   	Console.WriteLine("Rafael Deslogou");}
+                        	 	
+                        	 	if(logincheckY[1]==1){
+                        	 		Console.WriteLine("Clayton logou.");}
+                        	 	if(logincheckN[1]==1){
+                        	 	   	Console.WriteLine("Clayton Deslogou");}
+                        	 	
+                        	 	if(logincheckY[2]==1){
+                        	 		Console.WriteLine("{0} logou.", userprof[0]);}
+                        	 	if(logincheckN[2]==1){
+                        	 		Console.WriteLine("{0} Deslogou", userprof[0]);}
+                        	 	
+                        	 	Console.WriteLine("\nTecle qualquer tecla para retornar");
+                        	 	
+                        		Console.ReadKey(true);
+                        		Console.Clear();
+                        		goto menuadm;
+                       		
+                        case("5"):
+                        		Console.Clear();
+                        		goto inicio;
+                        
+                    	default:
+                       		Console.Clear();
+                       		Console.ForegroundColor= ConsoleColor.Red;
+                        	Console.WriteLine("Opção inválida, tente novamente!");
+                        	Console.ReadKey(true);
+                      		Console.Clear();
+                          	goto menuadm;                
+                	}
+
+//[Área de Professores]================================================================================================================================================================================               
+
+//Professor Rafael
+
+            profrafael:
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Bem vindo Rafael \nO que deseja verificar?\n");
+                Console.WriteLine("1. Inserir Notas \n2. Mensagens \n3. Sair");
+                	string profrafaelopc = Console.ReadLine();
+                
+                switch(profrafaelopc){
+                   case("1"):
+                        
+                		Console.Clear();
+                        Console.WriteLine("Selecione um aluno: \n1. {0} \n2. {1}", useraluno[0], useraluno[1]);
+                        	string notas1=Console.ReadLine();
+                            
+                            if(notas1=="1") {
+                                Console.Clear();
+                                Console.WriteLine("Digite a nota que será aplicada para o aluno {0}", useraluno[0]);
+                                notaslogica[0]=Convert.ToDouble(Console.ReadLine());
+                                	if(notaslogica[0]>10){
+                                		Console.ForegroundColor = ConsoleColor.Red;
+                                		Console.WriteLine("Nota inválida.\nPor favor, digite um valor menor ou igual a 10");
+                                		notaslogica[0]=0;
+                                		Console.ReadKey(true);
+                                		Console.Clear();
+                                		goto profrafael;
+                                	}
+                            }
+                            if(notas1=="2"){
+                                Console.Clear();
+                                Console.WriteLine("Digite a nota que será aplicada para o aluno {0}", useraluno[1]);
+                                notaslogica[1]=Convert.ToDouble(Console.ReadLine());
+                                	if(notaslogica[1]>10){
+                                		Console.ForegroundColor = ConsoleColor.Red;
+                                		Console.WriteLine("Nota inválida.\nPor favor, digite um valor menor ou igual a 10");
+                                		notaslogica[1]=0;
+                                		Console.ReadKey(true);
+                                		Console.Clear();
+                                		goto profrafael;
+                                	}
+                            }
+                            
+                        Console.Clear();
+                		Console.ForegroundColor = ConsoleColor.Red;
+                		Console.WriteLine("Deseja sair? \n1. Sim \n2. Não"); string opcaoprof1=Console.ReadLine();
+                		
+                			if(opcaoprof1=="1"){
+                				Console.Clear();
+                				goto inicio;
+                			}
+                			if(opcaoprof1=="2"){
+                    			Console.Clear();
+                    			goto profrafael;
+                			}
+                			else                	
+                				Console.ForegroundColor = ConsoleColor.Red;
+                				Console.WriteLine("Opção inválida, favor retorne ao menu");
+                				Console.ReadKey(true);
+                				Console.Clear();
+                				goto profrafael;
+                				
+                   case("2"):
+                    	
+                		Console.Clear();
+                        Console.WriteLine("Mensagem de ADM para todos os usuários:{0}\n", mensagemall);
+                        Console.WriteLine("Mensagem de ADM para todos os professores:{0}\n", mensagemprof);
+                        Console.WriteLine("Pressiona qualquer tecla para retornar ao menu de professor");
+                      	Console.ReadKey(true);
+                      	Console.Clear();
+                      	goto profrafael;
+                      	
+                   case("3"):
+                      	logincheckN[0]=1;
+                    	Console.Clear();
+                      	goto inicio;
+                      	
+                   default:
+                      	Console.Clear();
+                      	Console.ForegroundColor= ConsoleColor.Red;
+                        Console.WriteLine("Opção inválida, tente novamente!");
+                        Console.ReadKey(true);
+                      	Console.Clear();
+                        goto profrafael;           
+                }
+                    
+//Professor Clayton
+
+            profclayton:
+                Console.ForegroundColor = ConsoleColor.Green;
+				Console.WriteLine("Bem vindo Clayton \nO que deseja verificar?");
+                Console.WriteLine("1. Inserir Notas\n2. Mensagens\n3. Sair");
+                	string profclaytonopc = Console.ReadLine();
+                
+                switch (profclaytonopc)
+                {
+                   case ("1"):
+                        
+                		Console.Clear();
+                        Console.WriteLine("Selecione um aluno: \n1. {0} \n2. {1}", useraluno[0], useraluno[1]);
+                        	string opcclayton = Console.ReadLine();
+                        
+                        	if(opcclayton=="1"){
+                            	Console.Clear();
+                            	Console.WriteLine("Digite a nota que será aplicada para o aluno {0}", useraluno[0]);
+                            	notasredes[0] = Convert.ToDouble(Console.ReadLine());
+                            		if(notasredes[0]>10){
+                                		Console.ForegroundColor = ConsoleColor.Red;
+                                		Console.WriteLine("Nota inválida.\nPor favor, digite um valor menor ou igual a 10");
+                                		notasredes[0]=0;
+                                		Console.ReadKey(true);
+                                		Console.Clear();
+                                		goto profclayton;
+                                	}
+                            }
+                            if(opcclayton=="2"){
+                            	Console.Clear();
+                            	Console.WriteLine("Digite a nota que será aplicada para o aluno {0}", useraluno[1]);
+                            	notasredes[1] = Convert.ToDouble(Console.ReadLine());
+                            		if(notasredes[1]>10){
+                                		Console.ForegroundColor = ConsoleColor.Red;
+                                		Console.WriteLine("Nota inválida.\nPor favor, digite um valor menor ou igual a 10");
+                                		notasredes[1]=0;
+                                		Console.ReadKey(true);
+                                		Console.Clear();
+                                		goto profclayton;
+                                	}
+                            }
+                
+                Console.Clear();
+                Console.ForegroundColor= ConsoleColor.Red;
+                Console.WriteLine("Deseja sair? \n1. Sim \n2. Não"); string opcclayton2 = Console.ReadLine();
+                
+                			if (opcclayton2 == "1"){
+                    			Console.Clear();
+                    			goto inicio;
+                			}
+                			else
+                    			Console.Clear();
+                    			goto profclayton;
+                    
+                   case("2"):
+                     
+                        Console.Clear();
+                        Console.WriteLine("Mensagem de ADM para todos os usuários:{0}\n", mensagemall);
+                        Console.WriteLine("Mensagem de ADM para todos os professores:{0}\n", mensagemprof);
+                        Console.WriteLine("Pressiona qualquer tecla para retornar ao menu de professor");
+                      	Console.ReadKey(true);
+                      	Console.Clear();
+                      	goto profclayton;
+                      	
+                      	 case("3"):
+                      logincheckN[1]=1;
+                    	Console.Clear();
+                      	goto inicio;
+                      	
+                   default:
+                      	Console.Clear();
+                      	Console.ForegroundColor= ConsoleColor.Red;
+                        Console.WriteLine("Opção inválida, tente novamente!");
+                        Console.ReadKey(true);
+                      	Console.Clear();
+                        goto profclayton;
+                }
+                
+//Professor de SISOPE
+
+               prof3:
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Bem vindo {0} \nO que deseja verificar?", userprof[0]);
+                Console.WriteLine("1. Inserir Notas\n2. Mensagens\n3. Sair");
+                	string prof3op = Console.ReadLine();
+                
+                switch (prof3op)
+                {
+                   case ("1"):
+                		
+                        Console.Clear();
+                        Console.WriteLine("Selecione um aluno: \n1. {0} \n2. {1}", useraluno[0], useraluno[1]);
+                        	string opcprof3 = Console.ReadLine();
+                        
+                        	if(opcprof3=="1"){
+                            Console.Clear();
+                            Console.WriteLine("Digite a nota que será aplicada para o aluno {0}", useraluno[0]);
+                            notassisope[0] = Convert.ToDouble(Console.ReadLine());
+                            		if(notassisope[0]>10){
+                                		Console.ForegroundColor = ConsoleColor.Red;
+                                		Console.WriteLine("Nota inválida.\nPor favor, digite um valor menor ou igual a 10");
+                                		notassisope[0]=0;
+                                		Console.ReadKey(true);
+                                		Console.Clear();
+                                		goto prof3;
+                                	}
+                        	}
+                            if(opcprof3=="2"){
+                            Console.Clear();
+                            Console.WriteLine("Digite a nota que será aplicada para o aluno {0}", useraluno[1]);
+                            notassisope[1] = Convert.ToDouble(Console.ReadLine());
+                            		if(notassisope[1]>10){
+                                		Console.ForegroundColor = ConsoleColor.Red;
+                                		Console.WriteLine("Nota inválida.\nPor favor, digite um valor menor ou igual a 10");
+                                		notassisope[1]=0;
+                                		Console.ReadKey(true);
+                                		Console.Clear();
+                                		goto prof3;
+                                	}
+                        	}
+                        
+               	Console.Clear();
+                Console.ForegroundColor= ConsoleColor.Red;
+                Console.WriteLine("Deseja sair? \n1. Sim \n2. Não"); string opcaoprof3 = Console.ReadLine();
+                			
+                			if (opcaoprof3 == "1"){
+                    			Console.Clear();
+                    			goto inicio;
+                			}
+                			else
+                    			Console.Clear();
+                    			goto prof3;
+                    
+                   case("2"):
+                    
+                    	Console.Clear();
+                      	Console.WriteLine("Mensagem de ADM para todos os usuários:{0}\n", mensagemall);
+                      	Console.WriteLine("Mensagem de ADM para todos os professores:{0}\n", mensagemprof);
+                      	Console.WriteLine("Pressiona qualquer tecla para retornar ao menu de professor");
+                      	Console.ReadKey(true);
+                      	Console.Clear();
+                      	goto prof3;
+                      	
+                      	 case("3"):
+                      logincheckN[2]=1;
+                    	Console.Clear();
+                      	goto inicio;
+                      	
+                   default:
+                      	Console.Clear();
+                    	Console.ForegroundColor= ConsoleColor.Red;
+                        Console.WriteLine("Opção inválida, tente novamente!");
+                        Console.ReadKey(true);
+                      	Console.Clear();
+                        goto prof3;
+                        
+                }
+
+//[Área de Alunos]=====================================================================================================================================================================================                
+
+//Primeiro Aluno Criado
+            aluno1:
+            	Console.ForegroundColor =ConsoleColor.Green;
+                Console.WriteLine("Bem vindo {0} \nO que deseja verificar?", useraluno[0]);
+                Console.WriteLine("1. Notas\n2. Mensagens\n3. Situação\n4. Retornar para o menu"); string aluno1notas = Console.ReadLine();
+                Console.Clear();
+                	switch(aluno1notas){
+                    	case("1"):
+                    	    Console.WriteLine("     Lógica \tRedes \tSistemas");
+                    	    Console.WriteLine("Nti1:  {0}\t {1}\t   {2}", notaslogica[0], notasredes[0], notassisope[0]);
+                    	    Console.ReadKey(true);
+                    	    Console.Clear();
+                    	    goto aluno1;
+                            
+                    	case("2"):
+                            Console.WriteLine("Mensagem de ADM para todos os usuários:{0}", mensagemall);
+                            Console.WriteLine("Mensagem de ADM para todos os alunos: {0}", mensagemaluno);
+                            Console.ReadKey(true);
+                    	    Console.Clear();
+                    	    goto aluno1;
+                    	    
+                    	case("3"):
+                    	        if((notaslogica[0]+notasredes[0]+notassisope[0])/3>=7){
+                    	       		Console.WriteLine("STATUS: Aprovado");
+                    	    	}
+                    	    	if((notaslogica[0]+notasredes[0]+notassisope[0])/3<7){
+                    	       		Console.ForegroundColor = ConsoleColor.Red;
+                    	        	Console.WriteLine("STATUS: Reprovado");
+                    	    	}
+                            Console.ReadKey(true);
+                    	    Console.Clear();
+                    	    goto aluno1;
+                    	case("4"):
+                 	       	Console.Clear();
+                            goto inicio;
+                            
+                    	default:
+                            Console.Clear();
+                            Console.ForegroundColor= ConsoleColor.Red;
+                            Console.WriteLine("Opção inválida, tente novamente!");
+                            Console.ReadKey(true);
+                        	Console.Clear();
+                            goto aluno1;
+                            
+                	}
+ 
+//Segundo Aluno Criado
+            aluno2:
+            	Console.ForegroundColor =ConsoleColor.Green;
+                Console.WriteLine("Bem vindo {0} \nO que deseja verificar?", useraluno[1]);
+                Console.WriteLine("1. Notas\n2. Mensagens\n3. Situação\n4. Retornar para o menu"); string aluno2notas = Console.ReadLine();
+                Console.Clear();
+                	switch(aluno2notas){
+                    	case("1"):
+                    	    Console.WriteLine("     Lógica \tRedes \tSistemas");
+                    	    Console.WriteLine("Nti1:  {0}\t {1}\t   {2}", notaslogica[1], notasredes[1], notassisope[1]);
+                            Console.ReadKey(true);
+                    	    Console.Clear();
+                    	    goto aluno2;
+                    	    
+                    	case("2"):
+                    	    Console.WriteLine("Mensagem de ADM para todos os usuários: {0}", mensagemall);
+                    	    Console.WriteLine("Mensagem de ADM para todos os alunos: {0}", mensagemaluno);
+                            Console.ReadKey(true);
+                    	    Console.Clear();
+                    	    goto aluno2;
+                    	    
+                    	case("3"):
+                    		    if((notaslogica[0]+notasredes[0]+notassisope[0])/3>=7){
+                    		       Console.WriteLine("STATUS: Aprovado");
+                    		       
+                    		    }
+                    		    if((notaslogica[0]+notasredes[0]+notassisope[0])/3<7){
+                    		       Console.ForegroundColor = ConsoleColor.Red;
+                    		       Console.WriteLine("STATUS: Reprovado");
+                        		}
+                            Console.ReadKey(true);
+                    	    Console.Clear();
+                    	    goto aluno2;
+                    	    
+                    	case("4"):
+                            Console.Clear();
+                            goto inicio;
+                            
+                    	default:
+                            Console.Clear();
+                        	Console.ForegroundColor= ConsoleColor.Red;
+                        	Console.WriteLine("Opção inválida, tente novamente!");
+                        	Console.ReadKey(true);
+                        	Console.Clear();
+                        	goto aluno2;
+                	}
